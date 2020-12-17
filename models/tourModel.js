@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-// const validator = require('validator');
-// const User = require('./userModel');
 
 const tourSchema = new mongoose.Schema(
   {
@@ -9,8 +7,6 @@ const tourSchema = new mongoose.Schema(
       required: [true, 'A tour must have a name'],
       maxlength: [40, 'A tour name must have less or equal than 40 characters'],
       minlength: [10, 'A tour name must have less or equal than 10 characters'],
-      // This will accept only name that does not contains numbers or spaces
-      // validate: [validator.isAlpha, 'Tour name must only contain characters'],
       unique: true,
       trim: true
     },
@@ -47,8 +43,6 @@ const tourSchema = new mongoose.Schema(
     },
     priceDiscount: {
       type: Number,
-      //this function is not going to work with update because this keyword is pointing to the current created document
-      //you can't use custome validator with this keyword if you want to use it on update
       validate: function (val) {
         return val < this.price;
       },
@@ -71,8 +65,6 @@ const tourSchema = new mongoose.Schema(
     createdAt: {
       type: Date,
       default: Date.now()
-      // we made that to hide the createdAt from the output
-      // select: false
     },
     startDates: [Date],
     secretTour: {
@@ -126,13 +118,6 @@ tourSchema.virtual('reviews', {
   foreignField: 'tour',
   localField: '_id'
 });
-
-//Embedding
-// tourSchema.pre('save', async function (next) {
-//   const guidesPromises = this.guides.map(async (id) => await User.findById(id));
-//   this.guides = await Promise.all(guidesPromises);
-//   next();
-// });
 
 tourSchema.pre(/^find/, function (next) {
   this.populate({
