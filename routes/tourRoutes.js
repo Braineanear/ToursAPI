@@ -5,19 +5,11 @@ const reviewRouter = require('./reviewRoutes');
 
 const router = express.Router();
 
-// router.param('id', tourController.checkID);
+// POST /tour/32434fs35/reviews
+// GET /tour/32434fs35/reviews
+// GET /tour/32434fs35/reviews/97987dssad8
 
-// POST /tour/4gdfg32vf4/reviews
-// GET /tour/4gdfg32vf4/reviews
-// GET /tour/4gdfg32vf4/reviews/4r342423g
-
-// router
-//   .route('/:tourId/reviews')
-//   .post(
-//     authController.protect,
-//     authController.restrictTo('user'),
-//     reviewController.createReview
-//   );
+// router.route('/:tourId/reviews').post(protect, restrictTo('user'), reviewController.createReview);
 
 router.use('/:tourId/reviews', reviewRouter);
 
@@ -57,13 +49,21 @@ router
   .get(tourController.getTour)
   .patch(
     authController.protect,
-    authController.restrictTo('admin', 'lead-guid'),
+    authController.restrictTo('admin', 'lead-guide'),
     tourController.updateTour
   )
   .delete(
     authController.protect,
     authController.restrictTo('admin', 'lead-guid'),
     tourController.deleteTour
+  );
+
+router
+  .route('/:id/photo')
+  .patch(
+    authController.protect,
+    authController.restrictTo('admin', 'lead-guide'),
+    tourController.uploadTourImages
   );
 
 module.exports = router;
