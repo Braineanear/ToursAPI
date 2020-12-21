@@ -8,6 +8,7 @@ const saveError = async (err) => {
     message: err.message,
     stack: err.stack
   });
+
   return newError.id;
 };
 
