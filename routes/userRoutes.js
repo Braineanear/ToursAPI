@@ -17,7 +17,7 @@ router.get('/logout', authController.logout);
 router.get('/me', userController.getMe, userController.getUser);
 router.patch('/updateMyPassword', authController.updatePassword);
 router.patch('/updateMe', userController.updateMe);
-router.patch('/:id/photo', userController.uploadUserPhoto);
+router.patch('/photo', userController.uploadUserPhoto);
 router.delete('/deleteMe', userController.deleteMe);
 
 router.use(authController.restrictTo('admin'));

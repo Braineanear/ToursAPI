@@ -10,6 +10,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const cors = require('cors');
+const session = require('express-session');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -45,10 +46,16 @@ const limiter = rateLimit({
 app.use('/api', limiter);
 
 // Body parser, reading data from body into req.body
-app.use(express.json({ limit: '10kb' }));
-app.use(express.urlencoded({ extended: true, limit: '10kb' }));
+app.use(bodyParser.json({ limit: '10kb' }));
+app.use(bodyParser.urlencoded({ limit: '10kb', extended: true }));
 app.use(cookieParser());
-
+app.use(
+  session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: true
+  })
+);
 // Date sanitization against NoSQL query injection
 app.use(mongoSanitize());
 

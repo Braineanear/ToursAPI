@@ -9,11 +9,11 @@ const factory = require('./handlerFactory');
 // @access  Private/Current User
 exports.uploadUserPhoto = catchAsync(async (req, res, next) => {
   // 1) Get user from database
-  const user = await User.findById(req.params.id).lean();
+  const user = await User.findById(req.user.id).lean();
 
   // 2) Check if user exist
   if (!user) {
-    return next(new AppError(`No user found with id ${req.params.id}`, 404));
+    return next(new AppError(`No user found with id ${req.user.id}`, 404));
   }
 
   // 3) Upload photo
@@ -25,7 +25,7 @@ exports.uploadUserPhoto = catchAsync(async (req, res, next) => {
       //user-id-currentsTimeTemp.jpeg
       const ext = file.mimetype.split('/')[1];
 
-      cb(null, `user-${request.params.id}-${Date.now()}.${ext}`);
+      cb(null, `user-${request.user.id}-${Date.now()}.${ext}`);
     }
   });
 
