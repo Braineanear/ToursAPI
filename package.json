@@ -38,6 +38,7 @@
     "nodemailer": "^6.4.16",
     "pug": "^3.0.0",
     "sharp": "^0.26.3",
+    "slugify": "^1.4.6",
     "validator": "^13.1.17",
     "xss-clean": "^0.1.1"
   },
