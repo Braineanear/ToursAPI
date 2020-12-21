@@ -15,7 +15,10 @@ const userSchema = new mongoose.Schema({
     lowercase: true,
     validate: [validator.isEmail, 'Please provide a valid email']
   },
-  photo: String,
+  photo: {
+    type: String,
+    default: 'default.jpg'
+  },
   role: {
     type: String,
     enum: ['user', 'guide', 'lead-guide', 'admin'],
@@ -98,13 +101,13 @@ userSchema.methods.createPasswordResetToken = function () {
   const resetToken = crypto.randomBytes(32).toString('hex');
 
   // Hash token and set to resetPasswordToken field
-  this.passwordResetToken = crypto
+  this.resetPasswordToken = crypto
     .createHash('sha256')
     .update(resetToken)
     .digest('hex');
 
   // Set expire
-  this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+  this.resetPasswordExpire = Date.now() + 10 * 60 * 1000;
 
   return resetToken;
 };
