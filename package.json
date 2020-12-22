@@ -40,7 +40,7 @@
     "pug": "^3.0.0",
     "sharp": "^0.26.3",
     "slugify": "^1.4.6",
-    "validator": "^13.1.17",
+    "validator": "^13.5.1",
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
