@@ -7,8 +7,10 @@ const User = require('../models/userModel');
 
 dotenv.config({ path: './config.env' });
 
-const DB =
-  'mongodb+srv://Armar:01004468937@apis.uj4am.mongodb.net/toursdb?retryWrites=true&w=majority';
+  const DB = process.env.DATABASE_CONNECTION.replace(
+    '<PASSWORD>',
+    process.env.DATABASE_PASSWORD
+  );
 mongoose
   .connect(DB, {
     useNewUrlParser: true,
