@@ -33,7 +33,7 @@
     "helmet": "^4.3.1",
     "hpp": "^0.2.3",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.8",
+    "mongoose": "^5.11.9",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "nodemailer": "^6.4.17",
