@@ -38,7 +38,7 @@
     "multer": "^1.4.2",
     "nodemailer": "^6.4.18",
     "pug": "^3.0.0",
-    "sharp": "^0.27.1",
+    "sharp": "^0.27.2",
     "slugify": "^1.4.7",
     "validator": "^13.5.2",
     "xss-clean": "^0.1.1"
