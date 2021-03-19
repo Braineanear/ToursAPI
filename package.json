@@ -37,8 +37,8 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "pug": "^3.0.0",
-    "nodemailer": "^6.5.0",
     "sharp": "^0.27.2",
+    "nodemailer": "^6.5.0",
     "slugify": "^1.4.7",
     "validator": "^13.5.2",
     "xss-clean": "^0.1.1"
