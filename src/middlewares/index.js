@@ -1,6 +1,7 @@
 import protect from './protect';
 import restrictTo from './restrictTo';
 import rateLimiter from './rateLimiter';
+import validate from './validate';
 import {
   generateToken,
   saveToken,
@@ -19,4 +20,4 @@ const tokens = {
   generateVerifyEmailToken
 };
 
-export { protect, restrictTo, rateLimiter, tokens };
+export { protect, restrictTo, validate, rateLimiter, tokens };
