@@ -2,11 +2,11 @@
 import express from 'express';
 
 // Routes
-import authRoute from './auth.route';
-import userRoute from './user.route';
-import tourRoute from './tour.route';
-import reviewRoute from './review.route';
-import profileRoute from './profile.route';
+import authRoute from './auth.routes';
+import userRoute from './user.routes';
+import tourRoute from './tour.routes';
+import reviewRoute from './review.routes';
+import profileRoute from './profile.routes';
 
 const router = express.Router();
 

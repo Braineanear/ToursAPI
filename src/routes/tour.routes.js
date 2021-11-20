@@ -1,16 +1,19 @@
 import express from 'express';
 
-import { protect, restrictTo } from '../middlewares';
+import { protect, restrictTo, validate } from '../middlewares';
 
 import { tourController } from '../controllers';
 
-import reviewRouter from './review.route';
+import reviewRouter from './review.routes';
+
+import { tourSchema } from '../validators';
 
 const {
   getAllTours,
   getTour,
   createTour,
   uploadTourImageCover,
+  uploadTourImages,
   updateTour,
   deleteTour,
   aliasTopTours,
@@ -19,6 +22,8 @@ const {
   getToursWithin,
   getDistances
 } = tourController;
+
+const { getAllToursSchema, createTourSchema } = tourSchema;
 
 const router = express.Router();
 
@@ -38,19 +43,21 @@ router
 
 router.route('/distances/:latlng/unit/:unit').get(getDistances);
 
-router.route('/').get(getAllTours);
+router.route('/').get(validate(getAllToursSchema), getAllTours);
 
 router.route('/:id').get(getTour);
 
 router.use(protect);
-router.use(restrictTo('admin', 'lead-guid'));
+router.use(restrictTo('admin', 'lead-guide'));
 
 router.route('/monthly-plan/:year').get(getMonthlyPlan);
 
-router.route('/').post(createTour);
+router.route('/').post(validate(createTourSchema), createTour);
 
 router.route('/:id').patch(updateTour).delete(deleteTour);
 
 router.route('/:id/cover').patch(uploadTourImageCover);
+
+router.route('/:id/images').patch(uploadTourImages);
 
 export default router;
