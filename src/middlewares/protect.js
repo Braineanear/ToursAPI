@@ -30,7 +30,7 @@ const protect = catchAsync(async (req, res, next) => {
   const decoded = await promisify(jwt.verify)(token, config.jwt.secret);
 
   // 3) Check if user still exists
-  const currentUser = await User.findById(decoded.id);
+  const currentUser = await User.findById(decoded.sub);
 
   if (!currentUser) {
     return next(
