@@ -35,11 +35,7 @@ const createSendToken = catchAsync(async (user, statusCode, res) => {
 // @route     POST /users/register
 // @access    Public
 export const register = catchAsync(async (req, res, next) => {
-  const { name, email, role, password, passwordConfirmation } = req.body;
-
-  if (!name || !email || !role || !password || !passwordConfirmation) {
-    return next(new AppError('Please provide all fields', 400));
-  }
+  const { email, role } = req.body;
 
   if (!['user', 'publisher'].includes(role)) {
     return next(
@@ -70,10 +66,6 @@ export const register = catchAsync(async (req, res, next) => {
 // @access    Public
 export const login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
-
-  if (!email || !password) {
-    return next(new AppError('Please provide email and password', 400));
-  }
 
   const user = await User.findOne({ email }).select('+password');
 
@@ -119,13 +111,13 @@ export const generateTokens = catchAsync(async (req, res, next) => {
   );
 
   if (!refreshTokenDoc) {
-    return new AppError('No token found.', 404);
+    return next(new AppError('No token found.', 404));
   }
 
   const user = await User.findById(refreshTokenDoc.user);
 
   if (!user) {
-    return new AppError('No user found.', 404);
+    return next(new AppError('No user found.', 404));
   }
 
   const authTokens = await generateAuthTokens(user);
@@ -149,7 +141,7 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
     return next(new AppError('There is no user with email address', 404));
   }
 
-  const resetPasswordToken = await generateResetPasswordToken(email);
+  const resetPasswordToken = await generateResetPasswordToken(user.id);
 
   await sendResetPasswordEmail(email, resetPasswordToken);
 
@@ -163,11 +155,8 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
 // @route     PATCH /users/reset-password/:token
 // @access    Public
 export const resetPassword = catchAsync(async (req, res, next) => {
-  const {
-    token: resetPasswordToken,
-    password,
-    passwordConfirmation
-  } = req.body;
+  const { password, passwordConfirmation } = req.body;
+  const { token: resetPasswordToken } = req.query;
 
   if (password !== passwordConfirmation) {
     return next(
@@ -191,6 +180,7 @@ export const resetPassword = catchAsync(async (req, res, next) => {
   }
 
   user.password = password;
+  user.passwordConfirmation = passwordConfirmation;
 
   await user.save();
 
@@ -207,7 +197,7 @@ export const resetPassword = catchAsync(async (req, res, next) => {
 });
 
 // @desc    Confirm Email Controller
-// @route   GET /users/confirm-email
+// @route   POST /users/confirm-email
 // @access  Public
 export const verifyEmail = catchAsync(async (req, res, next) => {
   const { token: verifyEmailToken } = req.query;
