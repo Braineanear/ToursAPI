@@ -1,10 +1,8 @@
 import express from 'express';
 
-import { validate } from '../middlewares';
-
-import { authSchema } from '../validators';
-
 import { authController } from '../controllers';
+import { validate } from '../middlewares';
+import { authSchema } from '../validators';
 
 const {
   register,

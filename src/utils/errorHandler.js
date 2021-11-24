@@ -1,9 +1,7 @@
 import config from '../config/config';
 import logger from '../config/logger';
-
-import AppError from './appError';
-
 import { ErrorStack } from '../models';
+import AppError from './appError';
 
 const saveError = async (err) => {
   const newError = await ErrorStack.create({
@@ -80,7 +78,7 @@ const handler = (err, req, res, next) => {
     error.message = err.message;
 
     if (error.name === 'CastError') error = handleCastErrorDB(error);
-    if (error.code === 11000) error = handleDuplicateFieldsDB(error);
+    if (error.code === 11_000) error = handleDuplicateFieldsDB(error);
     if (error.name === 'ValidationError') {
       error = handleValidationErrorDB(error);
     }

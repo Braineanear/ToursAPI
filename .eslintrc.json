@@ -3,28 +3,6 @@
     "node": true,
     "es6": true
   },
-  "ecmaFeatures": {
-    "arrowFunctions": true,
-    "blockBindings": true,
-    "classes": true,
-    "defaultParameters": true,
-    "destructuring": true,
-    "forOf": true,
-    "generators": true,
-    "modules": true,
-    "objectLiteralComputedProperties": true,
-    "objectLiteralDuplicateProperties": true,
-    "objectLiteralShorthandMethods": true,
-    "objectLiteralShorthandProperties": true,
-    "regexUFlag": true,
-    "regexYFlag": true,
-    "restParams": true,
-    "spread": true,
-    "superInFunctions": true,
-    "templateStrings": true,
-    "unicodeCodePointEscapes": true,
-    "globalReturn": true
-  },
   "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -32,7 +10,7 @@
     "allowImportExportEverywhere": true,
     "requireConfigFile": false
   },
-  "extends": ["airbnb", "prettier", "eslint:recommended"],
+  "extends": ["airbnb", "airbnb-babel", "prettier", "eslint:recommended"],
   "plugins": ["prettier", "no-secrets"],
   "rules": {
     "no-secrets/no-secrets":"error",
@@ -58,6 +36,7 @@
     "no-var": "error",
     "semi": "error",
     "prefer-const": "off",
-    "no-restricted-syntax": "off"
+    "no-restricted-syntax": "off",
+    "unicorn/prefer-node-protocol": "off"
   }
 }

@@ -1,10 +1,9 @@
 import express from 'express';
 
-import { protect, validate } from '../middlewares';
-
-import { profileSchema } from '../validators';
-
 import { profileController } from '../controllers';
+import { protect, validate } from '../middlewares';
+import { singleImage } from '../utils/multer';
+import { profileSchema } from '../validators';
 
 const { updateProfileDataSchema, changeProfilePasswordSchema } = profileSchema;
 
@@ -28,6 +27,6 @@ router
 router
   .route('/change-password')
   .patch(validate(changeProfilePasswordSchema), changeMyPassword);
-router.route('/image').patch(updateMyProfileImage);
+router.route('/image').patch(singleImage('image'), updateMyProfileImage);
 
 export default router;

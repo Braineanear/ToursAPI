@@ -3,10 +3,8 @@ import moment from 'moment';
 
 import config from '../config/config';
 import tokenTypes from '../config/tokens';
-
-import catchAsync from '../utils/catchAsync';
-
 import { Token } from '../models';
+import catchAsync from '../utils/catchAsync';
 
 /**
  * Generate token

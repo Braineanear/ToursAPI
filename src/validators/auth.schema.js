@@ -1,4 +1,5 @@
 import Joi from 'joi';
+
 import { password } from './custom.schema';
 
 export const registerSchema = {

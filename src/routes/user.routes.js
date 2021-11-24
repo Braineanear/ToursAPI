@@ -1,7 +1,6 @@
 import express from 'express';
 
 import { userController } from '../controllers';
-
 import { protect, restrictTo } from '../middlewares';
 
 const { getUser, getAllUsers, createUser, updateUser, deleteUser } =

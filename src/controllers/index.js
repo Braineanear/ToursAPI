@@ -1,50 +1,51 @@
 import {
-  register,
+  forgotPassword,
+  generateTokens,
   login,
   logout,
-  generateTokens,
-  forgotPassword,
+  register,
   resetPassword,
   verifyEmail
 } from './auth.controller';
-
 import {
-  createUser,
-  getAllUsers,
-  getUser,
-  updateUser,
-  deleteUser
-} from './user.controller';
-
-import {
+  changeMyPassword,
+  deleteMyAccount,
   getMyData,
   updateMyData,
-  changeMyPassword,
-  updateMyProfileImage,
-  deleteMyAccount
+  updateMyProfileImage
 } from './profile.controller';
-
 import {
-  getAllReviews,
-  setTourUserIds,
   createReview,
+  deleteReview,
+  getAllReviews,
   getReview,
-  updateReview,
-  deleteReview
+  setTourUserIds,
+  updateReview
 } from './review.controller';
 import {
-  getAllTours,
-  getTour,
-  createTour,
-  uploadTourImageCover,
-  updateTour,
-  deleteTour,
+  addImageTourImages,
   aliasTopTours,
-  getTourStats,
+  createTour,
+  deleteImageFromTourImages,
+  deleteTour,
+  getAllTours,
+  getDistances,
   getMonthlyPlan,
+  getTour,
+  getTourStats,
   getToursWithin,
-  getDistances
+  updateTour,
+  updateTourImageCover,
+  uploadTourImageCover,
+  uploadTourImages
 } from './tour.controller';
+import {
+  createUser,
+  deleteUser,
+  getAllUsers,
+  getUser,
+  updateUser
+} from './user.controller';
 
 const authController = {
   register,
@@ -86,6 +87,10 @@ const tourController = {
   getTour,
   createTour,
   uploadTourImageCover,
+  updateTourImageCover,
+  uploadTourImages,
+  addImageTourImages,
+  deleteImageFromTourImages,
   updateTour,
   deleteTour,
   aliasTopTours,
@@ -97,8 +102,8 @@ const tourController = {
 
 export {
   authController,
-  userController,
   profileController,
   reviewController,
-  tourController
+  tourController,
+  userController
 };

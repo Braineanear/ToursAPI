@@ -1,16 +1,13 @@
 import tokenTypes from '../config/tokens';
-
-import catchAsync from '../utils/catchAsync';
-import AppError from '../utils/appError';
-import {
-  sendVerificationEmail,
-  sendResetPasswordEmail,
-  sendAfterResetPasswordMessage
-} from '../utils/sendEmail';
-
 import { tokens } from '../middlewares';
-
-import { User, Token } from '../models';
+import { Token, User } from '../models';
+import AppError from '../utils/appError';
+import catchAsync from '../utils/catchAsync';
+import {
+  sendAfterResetPasswordMessage,
+  sendResetPasswordEmail,
+  sendVerificationEmail
+} from '../utils/sendEmail';
 
 const {
   verifyToken,

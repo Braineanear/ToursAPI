@@ -1,16 +1,14 @@
 // Packages
-import { promisify } from 'util';
 import jwt from 'jsonwebtoken';
+import { promisify } from 'node:util';
 
 // Configs
 import config from '../config/config';
-
-// Utils
-import catchAsync from '../utils/catchAsync';
-import AppError from '../utils/appError';
-
 // Models
 import { User } from '../models';
+import AppError from '../utils/appError';
+// Utils
+import catchAsync from '../utils/catchAsync';
 
 // @desc      Only signed in users can access the route
 // @route     No Route

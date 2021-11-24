@@ -1,13 +1,12 @@
 // Packages
-import { createTransport } from 'nodemailer';
 import { google } from 'googleapis';
+import { createTransport } from 'nodemailer';
 
 // Configs
 import config from '../config/config';
-
+import AppError from './appError';
 // Utils
 import catchAsync from './catchAsync';
-import AppError from './appError';
 
 /**
  * @desc    Send an email

@@ -1,14 +1,10 @@
-import protect from './protect';
-import restrictTo from './restrictTo';
-import rateLimiter from './rateLimiter';
-import validate from './validate';
 import {
-  generateToken,
-  saveToken,
-  verifyToken,
   generateAuthTokens,
   generateResetPasswordToken,
-  generateVerifyEmailToken
+  generateToken,
+  generateVerifyEmailToken,
+  saveToken,
+  verifyToken
 } from './tokens';
 
 const tokens = {
@@ -20,4 +16,9 @@ const tokens = {
   generateVerifyEmailToken
 };
 
-export { protect, restrictTo, validate, rateLimiter, tokens };
+export { tokens };
+
+export { default as protect } from './protect';
+export { default as rateLimiter } from './rateLimiter';
+export { default as restrictTo } from './restrictTo';
+export { default as validate } from './validate';

@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
-import crypto from 'crypto';
-import validator from 'validator';
 import { hash, verify } from 'argon2';
+import crypto from 'crypto';
+import mongoose from 'mongoose';
+import validator from 'validator';
 
 const userSchema = new mongoose.Schema(
   {
@@ -16,9 +16,14 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       validate: [validator.isEmail, 'Please provide a valid email']
     },
-    photo: {
+    profileImage: {
       type: String,
-      default: 'default.jpg'
+      default:
+        'https://tours-api-1.s3.eu-central-1.amazonaws.com/profile-image.png'
+    },
+    profileImageKey: {
+      type: String,
+      default: 'profile-image.png'
     },
     role: {
       type: String,

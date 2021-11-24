@@ -1,7 +1,6 @@
 import express from 'express';
 
 import { reviewController } from '../controllers';
-
 import { protect, restrictTo } from '../middlewares';
 
 const {

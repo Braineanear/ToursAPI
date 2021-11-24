@@ -3,10 +3,10 @@ import express from 'express';
 
 // Routes
 import authRoute from './auth.routes';
-import userRoute from './user.routes';
-import tourRoute from './tour.routes';
-import reviewRoute from './review.routes';
 import profileRoute from './profile.routes';
+import reviewRoute from './review.routes';
+import tourRoute from './tour.routes';
+import userRoute from './user.routes';
 
 const router = express.Router();
 

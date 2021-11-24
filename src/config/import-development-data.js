@@ -1,15 +1,14 @@
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import fs from 'fs';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import fs from 'fs';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
 
+// Models
+import { Review, Tour, User } from '../models';
 // Configs
 import config from './config';
 import logger from './logger';
-
-// Models
-import { Tour, Review, User } from '../models';
 
 dotenv.config({ path: '.env' });
 

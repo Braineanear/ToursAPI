@@ -1,8 +1,7 @@
-import s3 from '../config/s3';
 import config from '../config/config';
-
-import catchAsync from './catchAsync';
+import s3 from '../config/s3';
 import AppError from './appError';
+import catchAsync from './catchAsync';
 
 export const createBucket = (bucketName) => {
   const bucketParams = {

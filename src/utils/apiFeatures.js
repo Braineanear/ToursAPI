@@ -1,6 +1,6 @@
 // Utils
-import catchAsync from './catchAsync';
 import AppError from './appError';
+import catchAsync from './catchAsync';
 
 const apiFeatures = catchAsync(async (req, model, populate) => {
   let query;
@@ -66,9 +66,8 @@ const apiFeatures = catchAsync(async (req, model, populate) => {
   query = await query;
 
   const filterByValue = (array, value) =>
-    array.filter(
-      (data) =>
-        JSON.stringify(data).toLowerCase().indexOf(value.toLowerCase()) !== -1
+    array.filter((data) =>
+      JSON.stringify(data).toLowerCase().includes(value.toLowerCase())
     );
 
   if (req.query.filter) {

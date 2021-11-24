@@ -1,8 +1,7 @@
-import catchAsync from '../utils/catchAsync';
-import AppError from '../utils/appError';
-import APIFeatures from '../utils/apiFeatures';
-
 import { User } from '../models';
+import APIFeatures from '../utils/apiFeatures';
+import AppError from '../utils/appError';
+import catchAsync from '../utils/catchAsync';
 
 /**
  * @desc      Create User Controller

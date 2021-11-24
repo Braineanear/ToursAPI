@@ -1,9 +1,8 @@
+import { User } from '../models/index';
 import AppError from '../utils/appError';
 import catchAsync from '../utils/catchAsync';
-import uniqueId from '../utils/uniqueId';
-import { uploadObject, deleteObject, deleteDirectory } from '../utils/s3';
-
-import { User } from '../models/index';
+import { deleteDirectory, deleteObject, uploadObject } from '../utils/s3';
+import resizeConvert from '../utils/sharp';
 
 /**
  * @desc      Get Logged in User Data Controller
@@ -86,6 +85,15 @@ export const changeMyPassword = catchAsync(async (req, res, next) => {
     );
   }
 
+  if (currentPassword === password) {
+    return next(
+      new AppError(
+        'New password cannot be the same as the current password.',
+        401
+      )
+    );
+  }
+
   user.password = password;
   user.passwordConfirmation = passwordConfirmation;
 
@@ -105,18 +113,20 @@ export const changeMyPassword = catchAsync(async (req, res, next) => {
 export const updateMyProfileImage = catchAsync(async (req, res, next) => {
   const { id: userId, profileImageKey } = req.user;
   const { originalname, buffer } = req.file;
-  const fileId = uniqueId();
-  const imageName = originalname.split(' ').join('-');
-  const imagePath = `Users/${userId}/avatar/file-${fileId}-${imageName}`;
+  const imageName = originalname.replace(/[^\d.A-Za-z]/g, '');
+  const imagePath = `Users/${userId}/avatar/${imageName}`;
 
-  const result = await uploadObject(imagePath, buffer);
+  if (profileImageKey !== 'profile-image.png') {
+    await deleteObject(profileImageKey);
+  }
 
-  await deleteObject(profileImageKey);
+  const newBuffer = await resizeConvert(buffer, 180, 180);
+  const result = await uploadObject(imagePath, newBuffer);
 
   const user = await User.findByIdAndUpdate(
     userId,
     {
-      profileImageURL: result.Location,
+      profileImage: result.Location,
       profileImageKey: result.Key
     },
     {

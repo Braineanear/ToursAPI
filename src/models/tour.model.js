@@ -6,7 +6,7 @@ const tourSchema = new mongoose.Schema(
     name: {
       type: String,
       required: [true, 'A tour must have a name'],
-      maxlength: [40, 'A tour name must have less or equal than 40 characters'],
+      maxlength: [70, 'A tour name must have less or equal than 40 characters'],
       minlength: [10, 'A tour name must have less or equal than 10 characters'],
       unique: true,
       trim: true
@@ -59,11 +59,10 @@ const tourSchema = new mongoose.Schema(
       type: String,
       trim: true
     },
-    imageCover: {
-      type: String,
-      required: [true, 'A tour must have a cover image']
-    },
+    imageCover: String,
+    imageCoverKey: String,
     images: [String],
+    imagesKey: [String],
     startDates: [Date],
     secretTour: {
       type: Boolean,
@@ -94,7 +93,7 @@ const tourSchema = new mongoose.Schema(
     ],
     guides: [
       {
-        type: mongoose.Schema.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: [true, 'A tour must have a guide.']
       }

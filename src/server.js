@@ -1,8 +1,7 @@
 import app from './app';
-
-import logger from './config/logger';
-import connectDB from './config/database';
 import config from './config/config';
+import connectDB from './config/database';
+import logger from './config/logger';
 
 // Connect to MongoDB
 connectDB();
@@ -17,20 +16,8 @@ const server = app.listen(serverPort, () => {
   `);
 });
 
-const exitHandler = () => {
-  if (server) {
-    server.close(() => {
-      logger.info('Server closed');
-      process.exit(1);
-    });
-  } else {
-    process.exit(1);
-  }
-};
-
 const unexpectedErrorHandler = (error) => {
   logger.error(error);
-  exitHandler();
 };
 
 process.on('uncaughtException', unexpectedErrorHandler);

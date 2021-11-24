@@ -1,19 +1,20 @@
 import express from 'express';
 
-import { protect, restrictTo, validate } from '../middlewares';
-
 import { tourController } from '../controllers';
-
-import reviewRouter from './review.routes';
-
+import { protect, restrictTo, validate } from '../middlewares';
+import { multipleFiles, singleImage } from '../utils/multer';
 import { tourSchema } from '../validators';
+import reviewRouter from './review.routes';
 
 const {
   getAllTours,
   getTour,
   createTour,
   uploadTourImageCover,
+  updateTourImageCover,
   uploadTourImages,
+  addImageTourImages,
+  deleteImageFromTourImages,
   updateTour,
   deleteTour,
   aliasTopTours,
@@ -56,8 +57,15 @@ router.route('/').post(validate(createTourSchema), createTour);
 
 router.route('/:id').patch(updateTour).delete(deleteTour);
 
-router.route('/:id/cover').patch(uploadTourImageCover);
+router
+  .route('/:id/image-cover')
+  .post(singleImage('coverImage'), uploadTourImageCover)
+  .patch(singleImage('coverImage'), updateTourImageCover);
 
-router.route('/:id/images').patch(uploadTourImages);
+router
+  .route('/:id/images')
+  .post(multipleFiles(), uploadTourImages)
+  .patch(multipleFiles(), addImageTourImages)
+  .delete(deleteImageFromTourImages);
 
 export default router;

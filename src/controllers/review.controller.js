@@ -1,8 +1,7 @@
-import catchAsync from '../utils/catchAsync';
-import AppError from '../utils/appError';
-import APIFeatures from '../utils/apiFeatures';
-
 import { Review } from '../models';
+import APIFeatures from '../utils/apiFeatures';
+import AppError from '../utils/appError';
+import catchAsync from '../utils/catchAsync';
 
 export const setTourUserIds = (req, res, next) => {
   //Allow nested routes
