@@ -67,7 +67,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-optimize-regex": "^1.2.1",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-promise": "^5.1.1",
+    "eslint-plugin-promise": "^5.2.0",
     "eslint-plugin-react": "^7.27.1",
     "jest": "^27.3.1",
     "nodemon": "^2.0.15",
