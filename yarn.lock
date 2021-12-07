@@ -1932,14 +1932,7 @@ bser@2.1.1:
   dependencies:
     node-int64 "^0.4.0"
 
-bson@^4.2.2:
-  version "4.5.4"
-  resolved "https://registry.yarnpkg.com/bson/-/bson-4.5.4.tgz#5f74f1e11f743ea8aec30b5e24bfddae82846873"
-  integrity sha512-wIt0bPACnx8Ju9r6IsS2wVtGDHBr9Dxb+U29A1YED2pu8XOhS8aKjOnLZ8sxyXkPwanoK7iWWVhS1+coxde6xA==
-  dependencies:
-    buffer "^5.6.0"
-
-bson@^4.5.4:
+bson@^4.2.2, bson@^4.5.4:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/bson/-/bson-4.6.0.tgz#15c3b39ba3940c3d915a0c44d51459f4b4fbf1b2"
   integrity sha512-8jw1NU1hglS+Da1jDOUYuNcBJ4cNHCFIqzlwoFNnsTOg2R/ox0aTYcTiBN4dzRa9q7Cvy6XErh3L8ReTEb9AQQ==
@@ -4918,10 +4911,10 @@ mongodb@4.1.4:
   optionalDependencies:
     saslprep "^1.0.3"
 
-mongoose@^6.0.13:
-  version "6.0.13"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-6.0.13.tgz#e419c2ae0db3164e4c234ed783d8f8844f4bce53"
-  integrity sha512-/M/YKgx23fCX+j0lwObaHbCibXnMjyWeQrXZf0WaQeS/hL86wQVSmaOxh+kZXfyLOUr+vT2Hl44o50GZHUrKWw==
+mongoose@^6.0.15:
+  version "6.0.15"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-6.0.15.tgz#7f46e061cdb27081bc4d53b6f88e0aedede2c585"
+  integrity sha512-Lr53MKrJ4XNTdsMkhOYxeBJClsV7pgwr2VFf7E8TK9Xh5hs2kzFF49jJv9i4CWcshmydcF8uDfaQ9sQlqzZoYw==
   dependencies:
     bson "^4.2.2"
     kareem "2.3.2"
