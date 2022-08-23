@@ -25,7 +25,7 @@
     "@babel/node": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
     "@joi/date": "^2.1.0",
-    "argon2": "^0.28.2",
+    "argon2": "^0.29.0",
     "aws-sdk": "^2.1035.0",
     "chalk": "^4.1.0",
     "compression": "^1.7.4",
