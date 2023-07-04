@@ -23,7 +23,7 @@
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
     "@babel/node": "^7.16.0",
-    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-env": "^7.22.6",
     "@joi/date": "^2.1.0",
     "argon2": "^0.28.2",
     "aws-sdk": "^2.1035.0",
