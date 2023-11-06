@@ -54,7 +54,7 @@
     "@babel/eslint-parser": "^7.16.3",
     "@babel/eslint-plugin": "^7.14.5",
     "@babel/plugin-syntax-flow": "^7.16.0",
-    "eslint": "^8.3.0",
+    "eslint": "^8.53.0",
     "eslint-config-airbnb": "^19.0.1",
     "eslint-config-airbnb-babel": "^0.2.1",
     "eslint-config-prettier": "^8.1.0",
